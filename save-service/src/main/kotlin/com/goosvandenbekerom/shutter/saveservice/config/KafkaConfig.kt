@@ -27,7 +27,8 @@ class KafkaConfig {
             ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG to bootstrapServers,
             ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG to StringDeserializer::class.java,
             ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG to ByteArrayDeserializer::class.java,
-            ConsumerConfig.GROUP_ID_CONFIG to "save-consumer"
+            ConsumerConfig.GROUP_ID_CONFIG to "save-consumer",
+            ConsumerConfig.FETCH_MAX_BYTES_CONFIG to 5000000
     )
     @Bean
     fun consumerFactory() = DefaultKafkaConsumerFactory<String, ByteArray>(consumerConfigs())
