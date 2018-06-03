@@ -41,6 +41,7 @@ repositories {
 
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter')
+	compile("org.springframework.boot:spring-boot-starter-data-mongodb")
 	compile('org.springframework.kafka:spring-kafka')
     compile("commons-net:commons-net:3.6")
 	//compile('org.apache.kafka:kafka-streams:1.0.1')

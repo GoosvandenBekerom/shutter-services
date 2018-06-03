@@ -1,6 +1,10 @@
 spring:
   kafka:
     bootstrap-servers: localhost:9092
+  data:
+    mongodb:
+      host: localhost
+      database: images
 ftp:
   host: localhost
   port: 21
@@ -11,6 +15,10 @@ spring:
   profiles: docker-compose
   kafka:
     bootstrap-servers: kafka:9092
+  data:
+    mongodb:
+      host: mongo
+      database: images
 ftp:
   host: file-server
   port: 21
