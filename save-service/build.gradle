@@ -39,10 +39,10 @@ repositories {
 	mavenCentral()
 }
 
-
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter')
 	compile('org.springframework.kafka:spring-kafka')
+    compile("commons-net:commons-net:3.6")
 	//compile('org.apache.kafka:kafka-streams:1.0.1')
 	compile("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 	compile("org.jetbrains.kotlin:kotlin-reflect")
