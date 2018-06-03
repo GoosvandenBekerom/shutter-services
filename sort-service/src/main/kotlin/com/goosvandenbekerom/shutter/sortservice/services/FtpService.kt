@@ -1,14 +1,12 @@
-package com.goosvandenbekerom.shutter.saveservice.services
+package com.goosvandenbekerom.shutter.sortservice.services
 
-import com.goosvandenbekerom.shutter.saveservice.domain.SortedImageEntry
-import com.goosvandenbekerom.shutter.saveservice.exceptions.UnsupportedImageTypeException
-import com.goosvandenbekerom.shutter.saveservice.repositories.ImageRepository
+import com.goosvandenbekerom.shutter.sortservice.domain.SortedImageEntry
+import com.goosvandenbekerom.shutter.sortservice.repositories.ImageRepository
 import org.apache.commons.net.ftp.FTPClient
 import org.apache.commons.net.ftp.FTPReply
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Service
 import java.io.ByteArrayInputStream
-import java.net.URLConnection
 
 
 @Service

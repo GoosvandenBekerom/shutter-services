@@ -1,4 +1,4 @@
-package com.goosvandenbekerom.shutter.saveservice.domain
+package com.goosvandenbekerom.shutter.sortservice.domain
 
 import org.springframework.data.annotation.Id
 

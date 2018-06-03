@@ -1,6 +1,6 @@
-package com.goosvandenbekerom.shutter.saveservice.repositories
+package com.goosvandenbekerom.shutter.sortservice.repositories
 
-import com.goosvandenbekerom.shutter.saveservice.domain.SortedImageEntry
+import com.goosvandenbekerom.shutter.sortservice.domain.SortedImageEntry
 import org.springframework.data.mongodb.repository.MongoRepository
 import org.springframework.stereotype.Repository
 

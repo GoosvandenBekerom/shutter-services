@@ -1,4 +1,4 @@
-package com.goosvandenbekerom.shutter.saveservice.config
+package com.goosvandenbekerom.shutter.sortservice.config
 
 import org.apache.commons.net.ftp.FTPClient
 import org.springframework.context.annotation.Bean

@@ -1,9 +1,9 @@
-package com.goosvandenbekerom.shutter.saveservice
+package com.goosvandenbekerom.shutter.sortservice
 
-import com.goosvandenbekerom.shutter.saveservice.config.KafkaConfig
-import com.goosvandenbekerom.shutter.saveservice.repositories.ImageRepository
-import com.goosvandenbekerom.shutter.saveservice.services.FtpService
-import com.goosvandenbekerom.shutter.saveservice.services.SortingService
+import com.goosvandenbekerom.shutter.sortservice.config.KafkaConfig
+import com.goosvandenbekerom.shutter.sortservice.repositories.ImageRepository
+import com.goosvandenbekerom.shutter.sortservice.services.FtpService
+import com.goosvandenbekerom.shutter.sortservice.services.SortingService
 import org.apache.kafka.clients.consumer.ConsumerRecord
 import org.springframework.kafka.annotation.KafkaListener
 import org.springframework.stereotype.Component

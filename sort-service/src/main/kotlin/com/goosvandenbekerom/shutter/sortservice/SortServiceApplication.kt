@@ -1,4 +1,4 @@
-package com.goosvandenbekerom.shutter.saveservice
+package com.goosvandenbekerom.shutter.sortservice
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication

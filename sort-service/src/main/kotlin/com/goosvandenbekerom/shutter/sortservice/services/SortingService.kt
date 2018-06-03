@@ -1,4 +1,4 @@
-package com.goosvandenbekerom.shutter.saveservice.services
+package com.goosvandenbekerom.shutter.sortservice.services
 
 import org.springframework.stereotype.Service
 
