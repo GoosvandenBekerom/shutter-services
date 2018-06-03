@@ -6,7 +6,8 @@ import org.apache.commons.net.ftp.FTPClient
 import org.apache.commons.net.ftp.FTPReply
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Service
-import java.io.ByteArrayInputStream
+import java.awt.image.RenderedImage
+import javax.imageio.ImageIO
 
 
 @Service
@@ -20,7 +21,7 @@ class FtpService(private val ftp: FTPClient, private val imageRepo: ImageReposit
     @Value("\${ftp.password}")
     private lateinit var password: String
 
-    fun upload(id: String, image: ByteArray): Boolean {
+    fun upload(id: String, image: RenderedImage, ext: String): Boolean {
         if (!ftp.isConnected)
             ftp.connect(host, port)
 
@@ -35,8 +36,8 @@ class FtpService(private val ftp: FTPClient, private val imageRepo: ImageReposit
         }
 
         ftp.enterLocalPassiveMode()
-        val path = "$id-sorted.jpg"
-        val success = ftp.storeFile(path, ByteArrayInputStream(image))
+        val path = "$id-sorted.$ext"
+        val success = ImageIO.write(image, ext, ftp.appendFileStream(path))
         ftp.logout()
         ftp.disconnect()
 

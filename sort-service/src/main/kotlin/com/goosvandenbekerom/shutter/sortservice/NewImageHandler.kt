@@ -17,7 +17,7 @@ class NewImageHandler(private val sortingService: SortingService, private val ft
 
         val sorted = sortingService.sortPixels(data.value())
 
-        if (ftp.upload(id, sorted))
+        if (ftp.upload(id, sorted.first, sorted.second))
             println("upload of sorted image $id successful")
         else
             println("upload of sorted image $id failed") // TODO: upload error to some kind of logging topic?
