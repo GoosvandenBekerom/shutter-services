@@ -1,8 +1,18 @@
 spring:
   kafka:
     bootstrap-servers: localhost:9092
+ftp:
+  host: localhost
+  port: 21
+  username: shutter
+  password: shutter
 ---
 spring:
   profiles: docker-compose
   kafka:
     bootstrap-servers: kafka:9092
+ftp:
+  host: file-server
+  port: 21
+  username: shutter
+  password: shutter
