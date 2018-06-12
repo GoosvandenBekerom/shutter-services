@@ -2,31 +2,33 @@ package com.goosvandenbekerom.shutter.sortservice.services
 
 import com.goosvandenbekerom.shutter.sortservice.exceptions.UnsupportedImageTypeException
 import org.springframework.stereotype.Service
-import java.awt.Color
-import java.awt.image.RenderedImage
+import java.awt.image.BufferedImage
 import java.io.ByteArrayInputStream
 import java.net.URLConnection
 import javax.imageio.ImageIO
 
 @Service
 class SortingService {
-    data class Pixel(val x: Int, val y: Int, val color: Color)
+    data class Pixel(val x: Int, val y: Int, val rgb: Int)
 
-    fun sortPixels(bytes: ByteArray): Pair<RenderedImage, String> {
+    fun sortPixels(bytes: ByteArray): Pair<BufferedImage, String> {
         val ext = getImageExtensionFromBytes(bytes)
-        val image = ImageIO.read(ByteArrayInputStream(bytes))
+        val img = ImageIO.read(ByteArrayInputStream(bytes))
+
         val pixels = mutableListOf<Pixel>()
 
+        for (x in 0 until img.width)
+            for (y in 0 until img.height)
+                pixels.add(Pixel(x, y, img.getRGB(x,y)))
 
-        for (x in 0 until image.width)
-            for(y in 0 until image.height)
-                pixels.add(Pixel(x, y, Color(image.getRGB(x, y))))
+        val sorted = pixels.sortedBy { it.rgb }
 
-        pixels.sortBy { it.color.rgb }
+        var counter = 0
+        for (x in 0 until img.width)
+            for (y in 0 until img.height)
+                img.setRGB(x, y, sorted[counter++].rgb)
 
-        for (p in pixels) image.setRGB(p.x, p.y, p.color.rgb)
-
-        return Pair(image, ext)
+        return Pair(img, ext)
     }
 
     private fun getImageExtensionFromBytes(bytes: ByteArray): String {
