@@ -3,10 +3,12 @@ package com.goosvandenbekerom.shutter.saveservice.services
 import com.goosvandenbekerom.shutter.saveservice.domain.ImageEntry
 import com.goosvandenbekerom.shutter.saveservice.exceptions.UnsupportedImageTypeException
 import com.goosvandenbekerom.shutter.saveservice.repositories.ImageRepository
+import org.apache.commons.net.ftp.FTP
 import org.apache.commons.net.ftp.FTPClient
 import org.apache.commons.net.ftp.FTPReply
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Service
+import java.io.BufferedInputStream
 import java.io.ByteArrayInputStream
 import java.net.URLConnection
 
@@ -37,9 +39,10 @@ class FtpService(private val ftp: FTPClient, private val imageRepo: ImageReposit
         }
 
         ftp.enterLocalPassiveMode()
+        ftp.setFileType(FTP.BINARY_FILE_TYPE)
         val ext = getImageExtensionFromBytes(image)
         val path = "$id.$ext"
-        val success = ftp.storeFile(path, ByteArrayInputStream(image))
+        val success = ftp.storeFile(path, image.inputStream())
         ftp.logout()
         ftp.disconnect()
 

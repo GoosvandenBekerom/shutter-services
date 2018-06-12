@@ -2,6 +2,7 @@ package com.goosvandenbekerom.shutter.sortservice.services
 
 import com.goosvandenbekerom.shutter.sortservice.domain.SortedImageEntry
 import com.goosvandenbekerom.shutter.sortservice.repositories.ImageRepository
+import org.apache.commons.net.ftp.FTP
 import org.apache.commons.net.ftp.FTPClient
 import org.apache.commons.net.ftp.FTPReply
 import org.springframework.beans.factory.annotation.Value
@@ -36,6 +37,7 @@ class FtpService(private val ftp: FTPClient, private val imageRepo: ImageReposit
         }
 
         ftp.enterLocalPassiveMode()
+        ftp.setFileType(FTP.BINARY_FILE_TYPE)
         val path = "$id-sorted.$ext"
         val success = ImageIO.write(image, ext, ftp.appendFileStream(path))
         ftp.logout()

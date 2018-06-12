@@ -17,6 +17,7 @@ class SortingService {
         val image = ImageIO.read(ByteArrayInputStream(bytes))
         val pixels = mutableListOf<Pixel>()
 
+
         for (x in 0 until image.width)
             for(y in 0 until image.height)
                 pixels.add(Pixel(x, y, Color(image.getRGB(x, y))))

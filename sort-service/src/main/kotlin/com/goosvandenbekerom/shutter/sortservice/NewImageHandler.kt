@@ -9,7 +9,7 @@ import org.springframework.kafka.annotation.KafkaListener
 import org.springframework.stereotype.Component
 
 @Component
-class NewImageHandler(private val sortingService: SortingService, private val ftp: FtpService, private val imageRepo: ImageRepository) {
+class NewImageHandler(private val sortingService: SortingService, private val ftp: FtpService) {
     @KafkaListener(topics = [KafkaConfig.TOPIC_NEW_IMAGE], containerFactory = "kafkaListenerContainerFactory")
     fun newImage(data: ConsumerRecord<String, ByteArray>) {
         val id = data.key()
